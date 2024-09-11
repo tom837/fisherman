@@ -97,14 +97,17 @@ export default function HomeScreen( ) {
     </ScrollView>
     <View style={styles.footer}>
     <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-          <Text style={styles.footerItem}>Home</Text>
+        <Icon name="home"  color='#007AFF' style={styles.icon} />
+          <Text style={[styles.footerItem, { color: '#007AFF' }]}>Home</Text>
         </TouchableOpacity>
         
         <TouchableOpacity onPress={() => navigation.navigate("Politicians")}>
+        <Icon name="person" type="material" color='white' style={styles.icon} />
           <Text style={styles.footerItem}>Politicians</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate("Portfolio")}>
+        <Icon name="briefcase" type="font-awesome"  color='white' style={styles.icon} />
           <Text style={styles.footerItem}>Portfolio</Text>
         </TouchableOpacity>
       </View>

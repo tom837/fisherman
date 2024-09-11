@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'rea
 import { Icon } from 'react-native-elements';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useRouter, useGlobalSearchParams,useNavigation  } from 'expo-router';
-import '../(tabs)/global'
+import '../global'
 
 export default function PoliticianDetailScreen() {
     const navigation = useNavigation();
@@ -88,13 +88,18 @@ export default function PoliticianDetailScreen() {
       {/* Footer */}
 
       <View style={styles.footer}>
-      <TouchableOpacity onPress={() => router.push('/')}>
+      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+        <Icon name="home"  color='white' style={styles.icon} />
           <Text style={styles.footerItem}>Home</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push('/politicians')}>
+        
+        <TouchableOpacity onPress={() => navigation.navigate("Politicians")}>
+        <Icon name="person" type="material" color='white' style={styles.icon} />
           <Text style={styles.footerItem}>Politicians</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push('/portfolio')}>
+
+        <TouchableOpacity onPress={() => navigation.navigate("Portfolio")}>
+        <Icon name="briefcase" type="font-awesome"  color='white' style={styles.icon} />
           <Text style={styles.footerItem}>Portfolio</Text>
         </TouchableOpacity>
       {/* Add other navigation options here */}
@@ -104,7 +109,9 @@ export default function PoliticianDetailScreen() {
 }
 
 const styles = StyleSheet.create({
-    
+  icon: {
+    marginHorizontal: 5,
+  },
   container: {
     flex: 1,
     backgroundColor: '#1e1e1e',

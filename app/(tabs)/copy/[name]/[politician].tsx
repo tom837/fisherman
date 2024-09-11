@@ -117,15 +117,20 @@ export default function CopyTradeScreen() {
 
         {/* Footer */}
         <View style={styles.footer}>
-          <TouchableOpacity onPress={() => router.push('/')}>
-            <Text style={styles.footerItem}>Home</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.push('/politicians')}>
-            <Text style={styles.footerItem}>Politicians</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.push('/portfolio')}>
-            <Text style={styles.footerItem}>Portfolio</Text>
-          </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+        <Icon name="home"  color='white' style={styles.icon} />
+          <Text style={styles.footerItem}>Home</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity onPress={() => navigation.navigate("Politicians")}>
+        <Icon name="person" type="material" color='white' style={styles.icon} />
+          <Text style={styles.footerItem}>Politicians</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate("Portfolio")}>
+        <Icon name="briefcase" type="font-awesome"  color='white' style={styles.icon} />
+          <Text style={styles.footerItem}>Portfolio</Text>
+        </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
@@ -133,6 +138,9 @@ export default function CopyTradeScreen() {
 }
 
 const styles = StyleSheet.create({
+  icon: {
+    marginHorizontal: 5,
+  },
   container: {
     flex: 1, // Ensures it takes full height
     backgroundColor: '#1e1e1e',

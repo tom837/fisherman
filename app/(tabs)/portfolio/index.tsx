@@ -110,26 +110,30 @@ export default function PortfolioScreen() {
     </View>
   </View>
 </Modal>
-    <View style={styles.footer}>
+<View style={styles.footer}>
     <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+        <Icon name="home"  color='white' style={styles.icon} />
           <Text style={styles.footerItem}>Home</Text>
         </TouchableOpacity>
         
         <TouchableOpacity onPress={() => navigation.navigate("Politicians")}>
+        <Icon name="person" type="material" color='white' style={styles.icon} />
           <Text style={styles.footerItem}>Politicians</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate("Portfolio")}>
-          <Text style={styles.footerItem}>Portfolio</Text>
+        <Icon name="briefcase" type="font-awesome"  color='#007AFF' style={styles.icon} />
+          <Text style={[styles.footerItem, { color: '#007AFF' }]}>Portfolio</Text>
         </TouchableOpacity>
-      {/* Add other navigation options here */}
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-
+  icon: {
+    marginHorizontal: 5,
+  },
 
     container: {
         flex: 1,
@@ -241,7 +245,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 20,
     borderTopWidth: 1,
-    marginBottom:10,
     borderTopColor: '#333',
   },
   footerItem: {

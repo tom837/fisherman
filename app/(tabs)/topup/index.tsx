@@ -4,12 +4,8 @@ import { Icon } from 'react-native-elements';
 import { useRouter,useNavigation } from 'expo-router';
 import '../global';
 
-export default function CopyTradeScreen() {
+export default function TopUp() {
   const navigation = useNavigation();
-
-  useEffect(() => {
-    navigation.setOptions({ headerShown: false });
-  }, [navigation]);
   const router = useRouter();
   const [modalVisible, setModalVisible] = useState(false);
   const [amount, setAmount] = useState('200');
@@ -34,7 +30,7 @@ export default function CopyTradeScreen() {
       >
         {/* Header */}
         <View style={styles.header}>
-          <TouchableOpacity onPress={() => router.push('/portfolio')}>
+          <TouchableOpacity onPress={() => router.back()}>
             <Icon name="arrow-back" type="material" color="white" />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Top-up</Text>
@@ -108,15 +104,20 @@ export default function CopyTradeScreen() {
 
         {/* Footer */}
         <View style={styles.footer}>
-          <TouchableOpacity onPress={() => router.push('/')}>
-            <Text style={styles.footerItem}>Home</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.push('/politicians')}>
-            <Text style={styles.footerItem}>Politicians</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.push('/portfolio')}>
-            <Text style={styles.footerItem}>Portfolio</Text>
-          </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+        <Icon name="home"  color='white' style={styles.icon} />
+          <Text style={styles.footerItem}>Home</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity onPress={() => navigation.navigate("Politicians")}>
+        <Icon name="person" type="material" color='white' style={styles.icon} />
+          <Text style={styles.footerItem}>Politicians</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate("Portfolio")}>
+        <Icon name="briefcase" type="font-awesome"  color='white' style={styles.icon} />
+          <Text style={styles.footerItem}>Portfolio</Text>
+        </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
@@ -124,6 +125,9 @@ export default function CopyTradeScreen() {
 }
 
 const styles = StyleSheet.create({
+  icon: {
+    marginHorizontal: 5,
+  },
   container: {
     flex: 1,
     backgroundColor: '#1e1e1e',

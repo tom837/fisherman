@@ -107,14 +107,17 @@ export default function PoliticiansScreen() {
     </ScrollView>
     <View style={styles.footer}>
     <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+        <Icon name="home"  color='white' style={styles.icon} />
           <Text style={styles.footerItem}>Home</Text>
         </TouchableOpacity>
         
         <TouchableOpacity onPress={() => navigation.navigate("Politicians")}>
-          <Text style={styles.footerItem}>Politicians</Text>
+        <Icon name="person" type="material" color='#007AFF' style={styles.icon} />
+          <Text style={[styles.footerItem, { color: '#007AFF' }]}>Politicians</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate("Portfolio")}>
+        <Icon name="briefcase" type="font-awesome"  color='white' style={styles.icon} />
           <Text style={styles.footerItem}>Portfolio</Text>
         </TouchableOpacity>
     {/* Add other navigation options here */}
