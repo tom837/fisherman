@@ -16,7 +16,10 @@ export default function CopyTradeScreen() {
   
   const handleTopUp = () => {
     // Convert the input value to a number and add it to global.money
-    global.money = (global.money || 0) + parseFloat(amount);
+    const tip = parseFloat(amount)
+    const value=  tip.toFixed(2)
+
+    global.money = (global.money || 0) + value;
 
     // Navigate to another page (replace 'anotherpage' with your actual page path)
     setModalVisible(false);
@@ -46,7 +49,7 @@ export default function CopyTradeScreen() {
         <View style={styles.topUpContainer}>
           <Text style={styles.topUpLabel}>Top-up with credit card: *** 9878</Text>
           <TextInput
-            placeholder="200"
+            placeholder="$"
             placeholderTextColor="white"
             keyboardType="numeric"
             style={styles.input}
@@ -69,35 +72,39 @@ export default function CopyTradeScreen() {
         </View>
 
         
-
         <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            setModalVisible(!modalVisible);
-          }}
+  animationType="slide"
+  transparent={true}
+  visible={modalVisible}
+  onRequestClose={() => {
+    setModalVisible(!modalVisible);
+  }}
+>
+  <View style={styles.modalOverlay}>
+    <View style={styles.modalView}>
+      <Text style={styles.modalText}>Are you sure you want to add ${amount} to your account?</Text>
+      <Text style={styles.modalSubText}>
+        If you confirm ${amount} will automatically be taken out of your bank account and will be emidiatly available in your wallet.
+      </Text>
+      <View style={styles.modalButtonContainer}>
+        <TouchableOpacity
+          style={[styles.modalButtonleft, { backgroundColor: 'white' }]} // Light gray for "Don't Allow"
+          onPress={() => setModalVisible(false)}
         >
-          <View style={styles.modalOverlay}>
-            <View style={styles.modalView}>
-              <Text style={styles.modalText}>Are you sure you want to to-up your account?</Text>
-              <View style={styles.modalButtonContainer}>
-                <TouchableOpacity
-                  style={[styles.modalButton, { backgroundColor: 'red' }]}
-                  onPress={() => setModalVisible(false)}
-                >
-                  <Text style={styles.modalButtonText}>Cancel</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={[styles.modalButton, { backgroundColor: 'green' }]}
-                  onPress={handleTopUp}
-                >
-                  <Text style={styles.modalButtonText}>Confirm top-up</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-        </Modal>
+          <Text style={[styles.modalButtonText, { color: '#007AFF' }]}>Cancel</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.modalButtonright, { backgroundColor: 'white' }]} // Light gray for "OK"
+          onPress={handleTopUp}
+        >
+          <Text style={[styles.modalButtonText, { color: '#007AFF',fontWeight: 'bold', }]}>Confirm</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  </View>
+</Modal>
+
+
 
         {/* Footer */}
         <View style={styles.footer}>
@@ -120,11 +127,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#1e1e1e',
-    padding: 20,
+    padding: 10,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
+    paddingTop:20,
     marginBottom: 20,
     marginTop: 20,
   },
@@ -205,6 +213,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 20,
+    marginBottom:10,
     borderTopWidth: 1,
     borderTopColor: '#333',
     backgroundColor: '#1e1e1e',
@@ -217,34 +226,62 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // For dark background overlay
   },
   modalView: {
     backgroundColor: 'white',
     borderRadius: 10,
-    padding: 30,
+    paddingTop:20,
     alignItems: 'center',
-    width: '80%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    width: 300, // Adjust width to be more centered
   },
   modalText: {
-    fontSize: 18,
-    marginBottom: 20,
+    paddingHorizontal:20,
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 15,
     textAlign: 'center',
+  },
+  modalSubText: {
+    paddingHorizontal:20,
+    fontSize: 12,
+    color: '#666',
+    textAlign: 'center',
+    marginBottom: 20,
   },
   modalButtonContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     width: '100%',
   },
-  modalButton: {
-    padding: 10,
-    borderRadius: 5,
-    width: '40%',
+  modalButtonleft: {
+    backgroundColor: 'white',
+    borderBottomLeftRadius:10,
+    paddingVertical: 17,
+    paddingHorizontal: 15,
+    elevation: 2,
+    borderColor: 'grey',
+    borderTopWidth:1,
+    width: '50%', // For better alignment
+    alignItems: 'center',
+  },
+  modalButtonright: {
+    backgroundColor: 'white',
+    borderBottomRightRadius:10,
+    paddingVertical: 17,
+    paddingHorizontal: 15,
+    elevation: 2,
+    borderColor: 'grey',
+    borderLeftWidth:1,
+    borderTopWidth:1,
+    width: '50%', // For better alignment
     alignItems: 'center',
   },
   modalButtonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 18,
   },
 });

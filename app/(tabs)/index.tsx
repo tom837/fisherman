@@ -94,10 +94,10 @@ export default function HomeScreen( ) {
       <TouchableOpacity onPress={() => router.push('/')}>
           <Text style={styles.footerItem}>Home</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push('/politicians')}>
+        <TouchableOpacity onPress={() => router.replace('/politicians')}>
           <Text style={styles.footerItem}>Politicians</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push('/portfolio')}>
+        <TouchableOpacity onPress={() => router.replace('/portfolio')}>
           <Text style={styles.footerItem}>Portfolio</Text>
         </TouchableOpacity>
       {/* Add other navigation options here */}
@@ -150,7 +150,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingTop:35,
     marginVertical: 20,
+    marginTop: 20,
   },
   profilePic: {
     width: 50,
@@ -258,6 +260,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 20,
     borderTopWidth: 1,
+    marginBottom:10,
     borderTopColor: '#333',
   },
   footerItem: {

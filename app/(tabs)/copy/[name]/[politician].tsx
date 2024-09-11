@@ -98,16 +98,16 @@ export default function CopyTradeScreen() {
       </Text>
       <View style={styles.modalButtonContainer}>
         <TouchableOpacity
-          style={[styles.modalButtonleft, { backgroundColor: '#E0E0E0' }]} // Light gray for "Don't Allow"
+          style={[styles.modalButtonleft, { backgroundColor: 'white' }]} // Light gray for "Don't Allow"
           onPress={() => setModalVisible(false)}
         >
           <Text style={[styles.modalButtonText, { color: '#007AFF' }]}>Cancel</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.modalButtonright, { backgroundColor: '#E0E0E0' }]} // Light gray for "OK"
+          style={[styles.modalButtonright, { backgroundColor: 'white', }]} // Light gray for "OK"
           onPress={handleinvestment}
         >
-          <Text style={[styles.modalButtonText, { color: '#007AFF' }]}>Confirm</Text>
+          <Text style={[styles.modalButtonText, { color: '#007AFF',fontWeight: 'bold' }]}>Confirm</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -136,18 +136,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1, // Ensures it takes full height
     backgroundColor: '#1e1e1e',
-    padding: 20,
+    padding: 10,
   },
   scrollViewContent: {
     flex: 1,
-    paddingHorizontal: 10,
     paddingBottom: 70, // Add extra space for footer
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
+    paddingTop:20,
     marginBottom: 20,
-    marginTop:25,
+    marginTop:20,
   },
   headerTitle: {
     color: 'white',
@@ -219,6 +219,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
+    marginBottom:10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 20,
@@ -239,7 +240,7 @@ const styles = StyleSheet.create({
   modalView: {
     backgroundColor: 'white',
     borderRadius: 10,
-    paddingTop:10,
+    paddingTop:20,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -249,13 +250,15 @@ const styles = StyleSheet.create({
     width: 300, // Adjust width to be more centered
   },
   modalText: {
-    fontSize: 18,
+    paddingHorizontal:20,
+    fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 15,
     textAlign: 'center',
   },
   modalSubText: {
-    fontSize: 14,
+    paddingHorizontal:20,
+    fontSize: 12,
     color: '#666',
     textAlign: 'center',
     marginBottom: 20,
@@ -267,28 +270,27 @@ const styles = StyleSheet.create({
   modalButtonleft: {
     backgroundColor: 'white',
     borderBottomLeftRadius:10,
-    paddingVertical: 10,
+    paddingVertical: 17,
     paddingHorizontal: 15,
     elevation: 2,
     borderColor: 'grey',
-    borderTopWidth:2,
+    borderTopWidth:1,
     width: '50%', // For better alignment
     alignItems: 'center',
   },
   modalButtonright: {
     backgroundColor: 'white',
     borderBottomRightRadius:10,
-    paddingVertical: 10,
+    paddingVertical: 17,
     paddingHorizontal: 15,
     elevation: 2,
     borderColor: 'grey',
-    borderLeftWidth:2,
-    borderTopWidth:2,
+    borderLeftWidth:1,
+    borderTopWidth:1,
     width: '50%', // For better alignment
     alignItems: 'center',
   },
   modalButtonText: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 18,
   },
 });

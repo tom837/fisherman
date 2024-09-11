@@ -40,7 +40,6 @@ export default function PoliticianDetailScreen() {
         global.followedpoliticians.push(politicianWithoutFollowe)
         setidfollowed(true)
     }
-
   };
 
 
@@ -49,10 +48,10 @@ export default function PoliticianDetailScreen() {
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()}>
-          <Icon name="arrow-back" type="material" color="white" />
+          <Icon name="arrow-back" type="material" color="white" size={40}/>
         </TouchableOpacity>
         <TouchableOpacity onPress={handlefollow}>
-            <MaterialIcons name="notifications" size={24} color={isFollowed ? "blue" : "white"}/>
+            <MaterialIcons name="notifications" size={40} color={isFollowed ? "blue" : "white"}/>
         </TouchableOpacity>
       </View>
 
@@ -115,6 +114,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingTop:20,
     marginVertical: 20,
     marginTop:20,
   },
@@ -191,6 +191,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderTopWidth: 1,
     borderTopColor: '#333',
+    marginBottom:10,
   },
   footerItem: {
     color: 'white',
