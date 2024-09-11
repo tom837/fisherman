@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState} from 'react';
 import { View, Text, Image, StyleSheet, ScrollView,Modal, TouchableOpacity } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { useRouter,useNavigation } from 'expo-router';
@@ -7,9 +7,6 @@ import "../global"
 export default function PortfolioScreen() {
   const navigation = useNavigation();
 
-  useEffect(() => {
-    navigation.setOptions({ headerShown: false });
-  }, [navigation]);
     const router = useRouter();
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedInvestment, setSelectedInvestment] = useState(null);
@@ -114,13 +111,15 @@ export default function PortfolioScreen() {
   </View>
 </Modal>
     <View style={styles.footer}>
-      <TouchableOpacity onPress={() => router.push('/')}>
+    <TouchableOpacity onPress={() => navigation.navigate("Home")}>
           <Text style={styles.footerItem}>Home</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push('/politicians')}>
+        
+        <TouchableOpacity onPress={() => navigation.navigate("Politicians")}>
           <Text style={styles.footerItem}>Politicians</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push('/portfolio')}>
+
+        <TouchableOpacity onPress={() => navigation.navigate("Portfolio")}>
           <Text style={styles.footerItem}>Portfolio</Text>
         </TouchableOpacity>
       {/* Add other navigation options here */}
